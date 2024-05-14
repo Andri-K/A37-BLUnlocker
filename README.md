@@ -12,6 +12,7 @@
 6. Flash the edited devinfo.img.
 7. Now your phone's bootloader is unlocked!
 8. (Optional) Flash TWRP to your phone.
+9. (Optional) Install Magisk using dump and flash boot.img option.
 ## Putting your phone into EDL mode:
 Note: When in EDL mode, your phone screen will not turn on.
 1. Using ADB:

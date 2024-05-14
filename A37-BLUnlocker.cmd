@@ -38,15 +38,19 @@ echo ========================================
 echo 1. Dump devinfo.img
 echo 2. Flash devinfo.img
 echo 3. Flash TWRP
-echo 4. Quit Unlocker
-rem echo 5. Command Prompt
-rem choice /c 12345 /n /m "Choose what to do [1, 2, 3, 4, 5]:"
-choice /c 1234 /n /m "Choose what to do [1, 2, 3, 4]:"
+echo 4. Dump boot.img
+echo 5. Flash boot.img
+echo 6. Quit Unlocker
+rem echo 7. Command Promt
+rem choice /c 1234567 /n /m "Choose what to do [1, 2, 3, 4, 5, 6, 7]:"
+choice /c 123456 /n /m "Choose what to do [1, 2, 3, 4, 5, 6]:"
 if %errorlevel% equ 1 goto DUMP_DEVINFO
 if %errorlevel% equ 2 goto FLASH_DEVINFO
 if %errorlevel% equ 3 goto FLASH_TWRP
-if %errorlevel% equ 4 goto QUIT
-rem if %errorlevel% equ 5 goto CMD
+if %errorlevel% equ 4 goto DUMP_BOOT
+if %errorlevel% equ 5 goto FLASH_BOOT
+if %errorlevel% equ 6 goto QUIT
+rem if %errorlevel% equ 7 goto CMD
 :DUMP_DEVINFO
 cls
 color 1f
@@ -98,6 +102,39 @@ echo Flashing...
 %emmcdl% -p %flash_twrp_port% -f %firehose% -b recovery %twrp% > nul
 echo Done flashing!
 echo Now your phone has TWRP!
+echo Press any key to return to Unlocker menu...
+pause > nul
+goto MENU
+:DUMP_BOOT
+cls
+color 1f
+echo ========================================
+echo              Dump boot.img
+echo ========================================
+echo Please ensure your phone is in EDL mode.
+set /p dump_boot_port="Enter the port number that your phone is connected to (e.g COM1): "
+echo Press any key to start the Dumping process...
+pause > nul
+echo Dumping...
+%emmcdl% -p %dump_boot_port% -f %firehose% -d boot -o boot.img > nul
+echo Done dumping!
+echo Press any key to return to Unlocker menu...
+pause > nul
+goto MENU
+:FLASH_BOOT
+cls
+color 1f
+echo ========================================
+echo              Flash boot.img
+echo ========================================
+echo Please ensure your phone is in EDL mode.
+set /p flash_boot_port="Enter the port number that your phone is connected to (e.g COM1): "
+set /p patched_boot_file="Enter the full path of the patched boot.img file (Path must not contain any spaces!): "
+echo Press any key to start the Flashing process...
+pause > nul
+echo Flashing...
+%emmcdl% -p %flash_boot_port% -f %firehose% -b boot %patched_boot_file% > nul
+echo Done flashing!
 echo Press any key to return to Unlocker menu...
 pause > nul
 goto MENU

@@ -4,11 +4,11 @@
 ## How to Use:
 1. Clone or download the content of this repository.
 2. Put your phone into EDL mode and connect your phone using USB cable.
-3. Open 'A37-BLUnlocker.cmd'.
+3. Open `A37-BLUnlocker.cmd`.
 4. Dump your phone's devinfo.img.
 5. Edit the dumped devinfo.img accordingly.
-	1. Edit offset 0x10 value to FF,
-	2. Edit offset 0x18 value to FF.
+	1. Change offset 0x10 value to `FF`,
+	2. Change offset 0x18 value to `FF`.
 6. Flash the edited devinfo.img.
 7. Now your phone's bootloader is unlocked!
 8. (Optional) Flash TWRP to your phone.

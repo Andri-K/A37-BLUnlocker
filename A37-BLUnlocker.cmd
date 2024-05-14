@@ -79,10 +79,11 @@ echo ========================================
 echo Please ensure that you have edited the devinfo.img file according to the previous instruction.
 echo Please ensure your phone is in EDL mode.
 set /p flash_devinfo_port="Enter the port number that your phone is connected to (e.g COM1): "
+set /p edited_devinfo="Enter the full path of the previously edited devinfo.img (Must have no space in path): "
 echo Press any key to start the Flashing process...
 pause > nul
 echo Flashing...
-%emmcdl% -p %flash_devinfo_port% -f %firehose% -b devinfo devinfo.img > nul
+%emmcdl% -p %flash_devinfo_port% -f %firehose% -b devinfo %edited_devinfo% > nul
 echo Done flashing!
 echo Now your phone bootloader has been unlocked!
 echo Press any key to return to Unlocker menu...

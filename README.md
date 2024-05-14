@@ -4,7 +4,7 @@
 ## How to Use:
 1. Clone or download the content of this repository.
 2. Put your phone into EDL mode and connect your phone using USB cable.
-3. Open A37-BLUnlocker.cmd file you just downloaded.
+3. Open 'A37-BLUnlocker.cmd'.
 4. Dump your phone's devinfo.img.
 5. Edit the dumped devinfo.img accordingly.
 	1. Edit offset 0x10 value to FF,
